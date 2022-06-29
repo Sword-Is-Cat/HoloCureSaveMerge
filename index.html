@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HoloCure</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function download() {
+
+      if (homecode) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(homecode + data));
+        element.setAttribute('download', 'save.dat');
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      } else
+        alert('우리집 세이브파일은 필수 입력사항임');
+    }
+
+    let homecode = '';
+    let data = 'eyAiZm9vZCI6IDUuMCwgInNwZWNVbmxvY2siOiAxLjAsICJoYXN0ZSI6IDUuMCwgImhvbG9Db2lucyI6IDk5OTk5OTk5LjAsICJ1bmxvY2tlZEl0ZW1zIjogWyAiQm9keVBpbGxvdyIsICJGdWxsTWVhbCIsICJQaWtpUGlraVBpbWFuIiwgIlN1Y2N1YnVzSG9ybiIsICJIZWFkcGhvbmVzIiwgIlViZXJTaGVlcCIsICJIb2x5TWlsayIsICJTYWtlIiwgIkZhY2VNYXNrIiwgIkNyZWRpdENhcmQiLCAiSWRvbENvc3R1bWUiLCAiU3R1ZHlHbGFzc2VzIiwgIkdvcmlsbGFzUGF3IiwgIlN1cGVyQ2hhdHRvVGltZSIsICJQbHVzaGllIiwgIkluamVjdGlvbkFzYWNvY28iLCAiRW5lcmd5RHJpbmsiIF0sICJBVEsiOiA1LjAsICJ1bmxvY2tlZFdlYXBvbnMiOiBbICJQc3ljaG9BeGUiLCAiR2xvd3N0aWNrIiwgIlNwaWRlckNvb2tpbmciLCAiVGFpbHBsdWciLCAiQkxCb29rIiwgIkVsaXRlTGF2YSIsICJIb2xvQm9tYiIsICJIb2xvTGFzZXIiLCAiQ3V0dGluZ0JvYXJkIiwgIklkb2xTb25nIiBdLCAicmVnZW4iOiA1LjAsICJzcGVjQ0RSIjogNS4wLCAiRVhQIjogNS4wLCAibW9uZXlHYWluIjogNS4wLCAicmVyb2xsIjogMy4wLCAic2VlbkNvbGxhYnMiOiBbICJNaUNvbWV0IiwgIkRyYWdvbkJlYW0iLCAiRWxpdGVDb29raW5nIiwgIkxpZ2h0QmVhbSIsICJCTExvdmVyIiwgIkJyZWF0aGVJbkFzYWNvY28iLCAiSWRvbENvbmNlcnQiLCAiRmxhdEJvYXJkIiBdLCAicmVmdW5kIjogMC4wLCAiY2hhbGxlbmdlIjogMS4wLCAidW5sb2NrZWRDaGFyYWN0ZXJzIjogMC4wLCAiZWxpbWluYXRlIjogMC4wLCAicmFuZG9tTW9uZXlLZXkiOiA1NjUuMCwgInBpY2t1cFJhbmdlIjogNS4wLCAiU1BEIjogNS4wLCAiY2hhcmFjdGVycyI6IFsgWyAia3JvbmlpIiwgMjAuMCBdLCBbICJmdWJ1a2kiLCAwLjAgXSwgWyAiY2FsbGkiLCAyMC4wIF0sIFsgIm5vbmUiLCAwLjAgXSwgWyAiZmF1bmEiLCAyMC4wIF0sIFsgImVtcHR5IiwgMC4wIF0sIFsgImd1cmEiLCAyMC4wIF0sIFsgInNhbmEiLCAyMC4wIF0sIFsgImlyeXMiLCAyMC4wIF0sIFsgImJhZSIsIDIwLjAgXSwgWyAia2lhcmEiLCAyMC4wIF0sIFsgImluYSIsIDIwLjAgXSwgWyAiYW1lIiwgMjAuMCBdLCBbICJtdW1laSIsIDIwLjAgXSBdLCAiSFAiOiA1LjAsICJjcml0IjogNS4wIH0A';
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      document.getElementById('myhomefile').addEventListener('change', function () {
+
+        var fr = new FileReader();
+        fr.onload = function () {
+          homecode = fr.result.substring(0, 80);
+          console.log(homecode);
+        }
+
+        fr.readAsText(this.files[0]);
+      });
+
+      document.getElementById('newdatafile').addEventListener('change', function () {
+
+        var fr = new FileReader();
+        fr.onload = function () {
+          data = fr.result.substring(80);
+          console.log(data);
+        }
+
+        fr.readAsText(this.files[0]);
+      });
+
+    });
+
+  </script>
+  우리집 세이브 파일 <br />
+  <input id="myhomefile" type="file" /><br /><br />
+  내가하던 세이브 파일 <br />
+  <input id="newdatafile" type="file" /><br /><br />
+  <button onclick="download()">새 세이브파일 생성</button>
+</body>
+</html>
