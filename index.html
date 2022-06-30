@@ -2,19 +2,20 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>HoloCure</title>
+<title>HoloCureSaveMerge</title>
 </head>
 <body>
-	우리집 세이브 파일
+	현재 PC의 세이브파일
 	<br />
 	<input id="homecode" type="file" />
 	<br />
-	<br /> 내가하던 세이브 파일
+	<br /> 
+	원하는 Data의 세이브파일
 	<br />
 	<input id="datacode" type="file" />
 	<br />
 	<br />
-	<button onclick="download()">새 세이브파일 생성</button>
+	<button onclick="download()">세이브파일 생성</button>
 </body>
 <script src="jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -51,13 +52,16 @@ const fulldata =
 	'SIsIDIwLjAgXSwgWyAia2lhcmEiLCAyMC4wIF0sIFsgImluYSIs'+
 	'IDIwLjAgXSwgWyAiYW1lIiwgMjAuMCBdLCBbICJtdW1laSIsIDI'+
 	'wLjAgXSBdLCAiSFAiOiA1LjAsICJjcml0IjogNS4wIH0A';
+	
+const needOriginal = '원본세이브 파일은 반드시 필요합니다.';
+const dataNoFind = '이전하고자 하는 데이터가 확인되지 않습니다\n데이터치팅(코인 999999, 모든업그레이드, 모든캐릭터20Rank) 합니까?';
 
     function download() {
 
       if (codes.homecode) {
     	  
     	  if(!codes.datacode){
-    		  if(confirm('fullData?'))
+    		  if(confirm(dataNoFind))
     			  codes.datacode = fulldata;
     	  }
     	  
@@ -72,7 +76,7 @@ const fulldata =
 
         document.body.removeChild(element);
       } else
-        alert('original file required');
+        alert(needOriginal);
     }
     
     $(function(){
