@@ -386,14 +386,20 @@ function upgrades(){
 const keys = {
 
 	'upg' : 
-		[ 'HP', 'ATK', 'SPD', 'crit', 'pickupRange', 'haste', 'regen', 'specUnlock', 'specCDR', 'EXP', 'food', 'moneyGain', 'reroll', 'holoCoins' ],
+		[ 'HP', 'ATK', 'SPD', 'crit', 'pickupRange', 'haste', 'regen', 'specUnlock', 
+			'specCDR', 'EXP', 'food', 'moneyGain', 'reroll', 'holoCoins' ],
 	'chara' : 
-		[ 'ame', 'gura', 'ina', 'kiara', 'calli', 'bae', 'kronii', 'fauna', 'mumei', 'sana', 'irys' ],
+		[ 'ame', 'gura', 'ina', 'kiara', 'calli', 'bae', 'kronii', 'fauna', 'mumei', 
+			'sana', 'irys' ],
 	'weapone' : 
-		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
+		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 
+			'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
 	'item' : 
-		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'HolyMilk', 'FaceMask', 'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'StudyGlasses','SuperChattoTime' ],
+		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'HolyMilk', 'FaceMask', 
+			'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 
+			'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'StudyGlasses','SuperChattoTime' ],
 	'collab' : 
-		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 'MiComet', 'FlatBoard', 'LightBeam' ]
+		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 
+			'MiComet', 'FlatBoard', 'LightBeam' ]
 
 };
