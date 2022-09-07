@@ -80,7 +80,6 @@ select {
 body div {
 	margin: 0 auto;
 	width: 1080px;
-	min-height: 1000px;
 }
 
 #charaDiv div {
