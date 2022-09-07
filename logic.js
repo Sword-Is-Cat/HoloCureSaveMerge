@@ -114,8 +114,6 @@ function drawScreen() {
 		$th.innerText = key;
 		$input.setAttribute('type', 'number');
 		$input.setAttribute('id', key);
-		$input.setAttribute('min', 0);
-		$input.setAttribute('max', 999);
 		$input.value = 0;
 
 		if (idx == keys.chara.length - 1) {
