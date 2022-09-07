@@ -385,19 +385,15 @@ function upgrades(){
 
 const keys = {
 
-	'upg' : [ 'HP', 'ATK', 'SPD', 'crit', 'pickupRange', 'haste', 'regen',
-			'specUnlock', 'specCDR', 'EXP', 'food', 'moneyGain', 'reroll',
-			'holoCoins' ],
-	'chara' : [ 'ame', 'gura', 'ina', 'kiara', 'calli', 'bae', 'kronii',
-			'fauna', 'mumei', 'sana', 'irys' ],
-	'weapone' : [ 'PsychoAxe', 'Glowstick', 'SpiderCooking', 'Tailplug',
-			'BLBook', 'EliteLava', 'HoloBomb', 'HoloLaser', 'CuttingBoard',
-			'IdolSong' ],
-	'item' : [ 'BodyPillow', 'FullMeal', 'PikiPikiPiman', 'SuccubusHorn',
-			'Headphones', 'UberSheep', 'HolyMilk', 'Sake', 'FaceMask',
-			'CreditCard', 'IdolCostume', 'StudyGlasses', 'GorillasPaw',
-			'SuperChattoTime', 'Plushie', 'InjectionAsacoco', 'EnergyDrink' ],
-	'collab' : [ 'MiComet', 'DragonBeam', 'EliteCooking', 'LightBeam',
-			'BLLover', 'BreatheInAsacoco', 'IdolConcert', 'FlatBoard' ]
+	'upg' : 
+		[ 'HP', 'ATK', 'SPD', 'crit', 'pickupRange', 'haste', 'regen', 'specUnlock', 'specCDR', 'EXP', 'food', 'moneyGain', 'reroll', 'holoCoins' ],
+	'chara' : 
+		[ 'ame', 'gura', 'ina', 'kiara', 'calli', 'bae', 'kronii', 'fauna', 'mumei', 'sana', 'irys' ],
+	'weapone' : 
+		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
+	'item' : 
+		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'HolyMilk', 'FaceMask', 'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'StudyGlasses','SuperChattoTime' ],
+	'collab' : 
+		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 'MiComet', 'FlatBoard', 'LightBeam' ]
 
 };
