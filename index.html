@@ -2,102 +2,42 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>HoloCureSaveMerge</title>
+<title>HoloCureSaveEditor</title>
 </head>
 <body>
-	현재 PC의 세이브파일
-	<br />
-	<input id="homecode" type="file" />
-	<br />
-	<br /> 
-	원하는 Data의 세이브파일
-	<br />
-	<input id="datacode" type="file" />
-	<br />
-	<br />
-	<button onclick="download()">세이브파일 생성</button>
+
+	<div>
+		<div>
+			<p class="font30 tcenter">HoloCure SaveEditor</p>
+		</div>
+		<form>
+			<table id='resultTable' cellspacing="0" cellpadding="0" border="0"
+				summary="게시판 리스트">
+				<colgroup>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+					<col width='12.5%'>
+				</colgroup>
+				<tbody style='display:none;'>
+					
+
+				</tbody>
+			</table>
+		</form>
+		<div style='margin-top:20px;'>
+			<label style='float: left;'> <input type="file"
+				style='display: none;' /> <span class='button'>기존 세이브파일</span>
+			</label>
+			<button id='download' style='float: right;'>세이브파일 생성</button>
+		</div>
+	</div>
 </body>
+<link type="text/css" rel="stylesheet" href="default.css" />
 <script src="jquery-1.11.0.min.js"></script>
-<script type="text/javascript">
-
-let codes = new Object();
-const fulldata =
-	'eyAiZm9vZCI6IDUuMCwgInNwZWNVbmxvY2siOiAxLjAsICJoYXN'+
-	'0ZSI6IDUuMCwgImhvbG9Db2lucyI6IDk5OTk5OTk5LjAsICJ1bm'+
-	'xvY2tlZEl0ZW1zIjogWyAiQm9keVBpbGxvdyIsICJGdWxsTWVhb'+
-	'CIsICJQaWtpUGlraVBpbWFuIiwgIlN1Y2N1YnVzSG9ybiIsICJI'+
-	'ZWFkcGhvbmVzIiwgIlViZXJTaGVlcCIsICJIb2x5TWlsayIsICJ'+
-	'TYWtlIiwgIkZhY2VNYXNrIiwgIkNyZWRpdENhcmQiLCAiSWRvbE'+
-	'Nvc3R1bWUiLCAiU3R1ZHlHbGFzc2VzIiwgIkdvcmlsbGFzUGF3I'+
-	'iwgIlN1cGVyQ2hhdHRvVGltZSIsICJQbHVzaGllIiwgIkluamVj'+
-	'dGlvbkFzYWNvY28iLCAiRW5lcmd5RHJpbmsiIF0sICJBVEsiOiA'+
-	'1LjAsICJ1bmxvY2tlZFdlYXBvbnMiOiBbICJQc3ljaG9BeGUiLC'+
-	'AiR2xvd3N0aWNrIiwgIlNwaWRlckNvb2tpbmciLCAiVGFpbHBsd'+
-	'WciLCAiQkxCb29rIiwgIkVsaXRlTGF2YSIsICJIb2xvQm9tYiIs'+
-	'ICJIb2xvTGFzZXIiLCAiQ3V0dGluZ0JvYXJkIiwgIklkb2xTb25'+
-	'nIiBdLCAicmVnZW4iOiA1LjAsICJzcGVjQ0RSIjogNS4wLCAiRV'+
-	'hQIjogNS4wLCAibW9uZXlHYWluIjogNS4wLCAicmVyb2xsIjogM'+
-	'y4wLCAic2VlbkNvbGxhYnMiOiBbICJNaUNvbWV0IiwgIkRyYWdv'+
-	'bkJlYW0iLCAiRWxpdGVDb29raW5nIiwgIkxpZ2h0QmVhbSIsICJ'+
-	'CTExvdmVyIiwgIkJyZWF0aGVJbkFzYWNvY28iLCAiSWRvbENvbm'+
-	'NlcnQiLCAiRmxhdEJvYXJkIiBdLCAicmVmdW5kIjogMC4wLCAiY'+
-	'2hhbGxlbmdlIjogMS4wLCAidW5sb2NrZWRDaGFyYWN0ZXJzIjog'+
-	'MC4wLCAiZWxpbWluYXRlIjogMC4wLCAicmFuZG9tTW9uZXlLZXk'+
-	'iOiA1NjUuMCwgInBpY2t1cFJhbmdlIjogNS4wLCAiU1BEIjogNS'+
-	'4wLCAiY2hhcmFjdGVycyI6IFsgWyAia3JvbmlpIiwgMjAuMCBdL'+
-	'CBbICJmdWJ1a2kiLCAwLjAgXSwgWyAiY2FsbGkiLCAyMC4wIF0s'+
-	'IFsgIm5vbmUiLCAwLjAgXSwgWyAiZmF1bmEiLCAyMC4wIF0sIFs'+
-	'gImVtcHR5IiwgMC4wIF0sIFsgImd1cmEiLCAyMC4wIF0sIFsgIn'+
-	'NhbmEiLCAyMC4wIF0sIFsgImlyeXMiLCAyMC4wIF0sIFsgImJhZ'+
-	'SIsIDIwLjAgXSwgWyAia2lhcmEiLCAyMC4wIF0sIFsgImluYSIs'+
-	'IDIwLjAgXSwgWyAiYW1lIiwgMjAuMCBdLCBbICJtdW1laSIsIDI'+
-	'wLjAgXSBdLCAiSFAiOiA1LjAsICJjcml0IjogNS4wIH0A';
-	
-const needOriginal = '원본세이브 파일은 반드시 필요합니다.';
-const dataNoFind = '이전하고자 하는 데이터가 확인되지 않습니다\n데이터치팅(코인 999999, 모든업그레이드, 모든캐릭터20Rank) 합니까?';
-
-    function download() {
-
-      if (codes.homecode) {
-    	  
-    	  if(!codes.datacode){
-    		  if(confirm(dataNoFind))
-    			  codes.datacode = fulldata;
-    	  }
-    	  
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(codes.homecode + codes.datacode));
-        element.setAttribute('download', 'save.dat');
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
-      } else
-        alert(needOriginal);
-    }
-    
-    $(function(){
-    	$('input[type=file]').on('change', function(){
-    		const id = this.id;
-    		console.log(id);
-    		
-    		var fr = new FileReader();
-    		fr.onload = function(){
-    			
-    			if(id=='homecode')
-          			codes[id] = fr.result.substring(0,80);
-          	  	else
-          		  	codes[id] = fr.result.substring(80);
-    			
-    			console.log(id+' : '+codes[id]);
-    		}
-    		
-    		fr.readAsText(this.files[0]);
-    	});
-    });
-
-  </script>
+<script src="logic.js"></script>
 </html>
