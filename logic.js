@@ -271,7 +271,7 @@ function update(){
 	
 	if (data && data.uid) {
 
-		upgrades()
+		upgrades();
 		data.spec.unlockedItems = items();
 		data.spec.unlockedWeapons = weapones();
 		data.spec.seenCollabs = collabs();
