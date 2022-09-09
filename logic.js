@@ -349,7 +349,7 @@ function update(){
 		data.spec.unlockedItems = items();
 		data.spec.unlockedWeapons = weapones();
 		data.spec.seenCollabs = collabs();
-		data.spec.unlockedOutfits = oufits();
+		data.spec.unlockedOutfits = outfits();
 		data.spec.characters = characters();
 		data.spec.tears = tears();
 		
@@ -418,7 +418,7 @@ function collabs() {
 
 }
 
-function collabs() {
+function outfits() {
 
 	let arr = [];
 
