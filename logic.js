@@ -57,7 +57,9 @@ function drawScreen() {
 
 	for (let idx = 0; idx < keys.upg.length; idx++) {
 
-		let key = keys.upg[idx];
+		let arr = keys.upg[idx];
+		let key = arr[0];
+		let cnt = arr[1];
 
 		if (idx % 8 == 0) {
 			$tr1 = newChild('tr', $body);
@@ -74,7 +76,6 @@ function drawScreen() {
 		} else {
 			$input = newChild('select', $td);
 
-			let cnt = key == 'specUnlock' ? 1 : key == 'reroll' ? 3 : 5;
 			for (let i = 0; i <= cnt; i++) {
 				$option = newChild('option', $input);
 				$option.innerText = i;
@@ -242,7 +243,8 @@ function showData() {
 	$('#code').text(data.uid);
 	let spec = data.spec;
 
-	keys.upg.forEach(function(key) {
+	keys.upg.forEach(function(arr) {
+		let key = arr[0];
 		$('#' + key).val(data.spec[key]);
 	});
 
@@ -373,8 +375,8 @@ function characters(){
 
 function upgrades(){
 	
-	keys.upg.forEach(function(key){
-		
+	keys.upg.forEach(function(arr){
+		let key = arr[0];
 		data.spec[key] = (Number)($('#'+key).val());
 		
 	});
@@ -383,12 +385,29 @@ function upgrades(){
 
 const keys = {
 
-	'upg' : 
-		[ 'HP', 'ATK', 'SPD', 'crit', 'pickupRange', 'haste', 'regen', 'specUnlock', 
-			'specCDR', 'EXP', 'food', 'moneyGain', 'reroll', 'holoCoins' ],
+	'upg' : [ 
+		['HP',10],
+		['ATK',10],
+		['SPD',10],
+		['crit',5],
+		['pickupRange',10],
+		['haste',5],
+		['regen',5],
+		['specUnlock',1],
+		['specCDR',5],
+		['growth',1],
+		['EXP',5],
+		['food',5],
+		['moneyGain',10],
+		['reroll',5],
+		['enhanceUp',5],
+		['DR',5],
+		['holoCoins'] ],
 	'chara' : 
-		[ 'ame', 'gura', 'ina', 'kiara', 'calli', 'bae', 'kronii', 'fauna', 'mumei', 
-			'sana', 'irys' ],
+		[ 'ame', 'gura', 'ina', 'kiara', 'calli', 
+			'bae', 'kronii', 'fauna', 'mumei', 'sana', 
+			'irys', 'fubuki', 'mio', 'okayu', 'korone', 
+			'sora', 'azki', 'roboco', 'suisei', 'miko' ],
 	'weapone' : 
 		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 
 			'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
