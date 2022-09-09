@@ -216,6 +216,36 @@ function drawScreen() {
 
 	});
 	// !COLLAB create
+	
+	// OUTFIT create
+	$tr = newChild('tr', $body);
+
+	$th = newChild('th', $tr);
+	$th.setAttribute('colspan', 8);
+	$th.innerText = 'UNLOCK OUTFITS';
+
+	$tr = newChild('tr', $body);
+	$td = newChild('td', $tr);
+	$td.setAttribute('colspan', 8);
+
+	keys.outfit.forEach(function(key, idx) {
+
+		if (idx != 0 && idx % 10 == 0)
+			newChild('br', $td);
+
+		$option = newChild('label', $td);
+
+		$input = newChild('input', $option);
+		$input.setAttribute('type', 'checkbox');
+		$input.setAttribute('name', 'outfit');
+		$input.setAttribute('value', key);
+		$input.setAttribute('id', key);
+
+		$span = newChild('span', $option);
+		$span.innerText = key;
+
+	});
+	// !OUTFIT create
 
 }
 
@@ -263,6 +293,10 @@ function showData() {
 	});
 	
 	data.spec.unlockedWeapons.forEach(function(key){
+		$('#'+key).prop('checked', true);
+	});
+	
+	data.spec.unlockedOutfits.forEach(function(key){
 		$('#'+key).prop('checked', true);
 	});
 	
@@ -413,11 +447,13 @@ const keys = {
 		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 
 			'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
 	'item' : 
-		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'HolyMilk', 'FaceMask', 
+		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'Halu','HolyMilk', 'FaceMask', 
 			'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 
-			'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'StudyGlasses','SuperChattoTime' ],
+			'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'PiggyBank', 'StudyGlasses','SuperChattoTime'],
 	'collab' : 
 		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 
-			'MiComet', 'FlatBoard', 'LightBeam' ]
+			'MiComet', 'FlatBoard', 'LightBeam' ],
+	'outfit' :
+		[ 'kurokami', 'ameAlt1', 'inaAlt1', 'guraAlt1', 'calliAlt1', 'kiaraAlt1', 'irysAlt1', 'baeAlt1', 'sanaAlt1', 'faunaAlt1', 'mumeiAlt1', 'kroniiAlt1']
 
 };
