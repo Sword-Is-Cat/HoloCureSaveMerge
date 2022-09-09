@@ -505,7 +505,7 @@ const keys = {
 	'item' :[ 
 		'Sake', 
 		'Limiter', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'Halu','HolyMilk', 'FaceMask', 
-		'Plushie', 'SuccubusHorn', 'FullMeal', 'Membership', 'PikiPikiPiman', 'Headphones', 
+		'Plushie', 'SuccubusHorn', 'FullMeal', 'Membership', 'PikiPikiPiman', 'Headphones', 'ChickensFeather',
 		'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'PiggyBank', 'StudyGlasses', 'Bandaid',
 		'GWSPill','SuperChattoTime'
 		],
