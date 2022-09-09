@@ -498,16 +498,21 @@ const keys = {
 			'bae', 'kronii', 'fauna', 'mumei', 'sana', 
 			'irys', 'fubuki', 'mio', 'okayu', 'korone', 
 			'sora', 'azki', 'roboco', 'suisei', 'miko' ],
-	'weapone' : 
-		[ 'SpiderCooking', 'EliteLava', 'HoloBomb', 'PsychoAxe', 'BLBook', 'CuttingBoard', 
-			'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' ],
-	'item' : 
-		[ 'Sake', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'Halu','HolyMilk', 'FaceMask', 
-			'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 
-			'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'PiggyBank', 'StudyGlasses','SuperChattoTime'],
-	'collab' : 
-		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 
-			'MiComet', 'FlatBoard', 'LightBeam' ],
+	'weapone' :[ 
+		'SpiderCooking', 'EliteLava', 'CEOTears', 'HoloBomb', 'PsychoAxe', 'BLBook', 
+		'CuttingBoard', 'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' 
+		],
+	'item' :[ 
+		'Sake', 
+		'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'Halu','HolyMilk', 'FaceMask', 
+		'Plushie', 'SuccubusHorn', 'FullMeal', 'PikiPikiPiman', 'Headphones', 
+		'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'PiggyBank', 'StudyGlasses', 'Bandaid', 
+		'GWSPill','SuperChattoTime'
+		],
+	'collab' :[ 
+		'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 
+		'IdolConcert', 'BLLover', 'MiComet', 'FlatBoard', 'LightBeam' 
+		],
 	'outfit' :
 		[ 'kurokami', 'ameAlt1', 'inaAlt1', 'guraAlt1', 'calliAlt1', 'kiaraAlt1', 'irysAlt1', 'baeAlt1', 'sanaAlt1', 'faunaAlt1', 'mumeiAlt1', 'kroniiAlt1'],
 	'tear':
