@@ -499,7 +499,7 @@ const keys = {
 			'irys', 'fubuki', 'mio', 'okayu', 'korone', 
 			'sora', 'azki', 'roboco', 'suisei', 'miko' ],
 	'weapone' :[ 
-		'SpiderCooking', 'EliteLava', 'CEOTears', 'HoloBomb', 'PsychoAxe', 'BLBook', 
+		'SpiderCooking', 'EliteLava', 'CEOTears', 'WamyWater','HoloBomb', 'PsychoAxe', 'BLBook', 
 		'CuttingBoard', 'HoloLaser', 'Tailplug', 'Glowstick', 'IdolSong' 
 		],
 	'item' :[ 
@@ -510,7 +510,7 @@ const keys = {
 		'GWSPill','SuperChattoTime'
 		],
 	'collab' :[ 
-		'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 
+		'BreatheInAsacoco', 'DragonBeam', 'BrokenDreams', 'EliteCooking', 
 		'IdolConcert', 'BLLover', 'MiComet', 'FlatBoard', 'LightBeam' 
 		],
 	'outfit' :
