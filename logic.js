@@ -87,8 +87,9 @@ function drawScreen() {
 		$input.setAttribute('id', key);
 
 		if (idx == keys.upg.length - 1) {
-			$th.setAttribute('colspan', (80 - idx) % 8);
-			$td.setAttribute('colspan', (80 - idx) % 8);
+			let width = (79 - idx) % 8 +1 ;
+			$th.setAttribute('colspan', width);
+			$td.setAttribute('colspan', width);
 		}
 
 	}
