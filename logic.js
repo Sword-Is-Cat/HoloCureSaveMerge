@@ -126,6 +126,38 @@ function drawScreen() {
 
 	}
 	// !CHARACTER create
+	
+	// TEAR create
+	$tr = newChild('tr', $body);
+
+	$th = newChild('th', $tr);
+	$th.setAttribute('colspan', 8);
+	$th.innerText = 'TEARS';
+
+	for (let idx = 0; idx < keys.tear.length; idx++) {
+
+		let key = keys.tear[idx];
+
+		if (idx % 4 == 0)
+			$tr = newChild('tr', $body);
+
+		$th = newChild('th', $tr);
+		$td = newChild('td', $tr);
+		$input = newChild('input', $td);
+
+		$th.innerText = key;
+		$input.setAttribute('type', 'number');
+		$input.setAttribute('id', key);
+		$input.value = 0;
+
+		if (idx == keys.tear.length - 1) {
+			let $empty = newChild('td', $tr);
+			let cnt = ((79 - idx) % 4) * 2;
+			$empty.setAttribute('colspan', cnt);
+		}
+
+	}
+	// !TEAR create
 
 	// ITEMS create
 	$tr = newChild('tr', $body);
@@ -284,6 +316,11 @@ function showData() {
 		$('#' + key).val(lv);
 	});
 	
+	data.spec.tears.forEach(function(arr) {
+		let key = arr[0], lv = arr[1];
+		$('#' + key).val(lv);
+	});
+	
 	data.spec.seenCollabs.forEach(function(key){
 		$('#'+key).prop('checked', true);
 	});
@@ -313,6 +350,7 @@ function update(){
 		data.spec.unlockedWeapons = weapones();
 		data.spec.seenCollabs = collabs();
 		data.spec.characters = characters();
+		data.spec.tears = tears();
 		
 		encoding();
 
@@ -408,6 +446,23 @@ function characters(){
 	
 }
 
+function tears(){
+	
+	let arr = [];
+	let temp;
+	keys.tear.forEach(function(key){
+		
+		temp = new Array();
+		temp.push(key);
+		temp.push((Number)($('#'+key).val()));
+		arr.push(temp);
+		
+	});
+	
+	return arr;
+	
+}
+
 function upgrades(){
 	
 	keys.upg.forEach(function(arr){
@@ -454,6 +509,8 @@ const keys = {
 		[ 'BreatheInAsacoco', 'DragonBeam', 'EliteCooking', 'IdolConcert', 'BLLover', 
 			'MiComet', 'FlatBoard', 'LightBeam' ],
 	'outfit' :
-		[ 'kurokami', 'ameAlt1', 'inaAlt1', 'guraAlt1', 'calliAlt1', 'kiaraAlt1', 'irysAlt1', 'baeAlt1', 'sanaAlt1', 'faunaAlt1', 'mumeiAlt1', 'kroniiAlt1']
+		[ 'kurokami', 'ameAlt1', 'inaAlt1', 'guraAlt1', 'calliAlt1', 'kiaraAlt1', 'irysAlt1', 'baeAlt1', 'sanaAlt1', 'faunaAlt1', 'mumeiAlt1', 'kroniiAlt1'],
+	'tear':
+		['myth', 'councilHope', 'gamers', 'gen0']
 
 };
