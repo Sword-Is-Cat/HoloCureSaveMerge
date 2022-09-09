@@ -349,6 +349,7 @@ function update(){
 		data.spec.unlockedItems = items();
 		data.spec.unlockedWeapons = weapones();
 		data.spec.seenCollabs = collabs();
+		data.spec.unlockedOutfits = oufits();
 		data.spec.characters = characters();
 		data.spec.tears = tears();
 		
@@ -410,6 +411,18 @@ function collabs() {
 	let arr = [];
 
 	$('input:checkbox[name=collab]:checked').each(function() {
+		arr.push(this.value);
+	});
+
+	return arr;
+
+}
+
+function collabs() {
+
+	let arr = [];
+
+	$('input:checkbox[name=outfit]:checked').each(function() {
 		arr.push(this.value);
 	});
 
