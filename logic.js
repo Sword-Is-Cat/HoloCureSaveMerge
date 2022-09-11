@@ -69,7 +69,7 @@ function drawScreen() {
 		$th = newChild('th', $tr1);
 		$td = newChild('td', $tr2);
 
-		$th.innerText = key;
+		$th.innerText = dic[key]||key;
 		if (key == 'holoCoins') {
 			$input = newChild('input', $td);
 			$input.setAttribute('type', 'number');
@@ -113,15 +113,17 @@ function drawScreen() {
 		$td = newChild('td', $tr);
 		$input = newChild('input', $td);
 
-		$th.innerText = key;
+		$th.innerText = dic[key]||key;
 		$input.setAttribute('type', 'number');
 		$input.setAttribute('id', key);
 		$input.value = 0;
 
 		if (idx == keys.chara.length - 1) {
-			let $empty = newChild('td', $tr);
 			let cnt = ((79 - idx) % 4) * 2;
-			$empty.setAttribute('colspan', cnt);
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
 		}
 
 	}
@@ -145,15 +147,17 @@ function drawScreen() {
 		$td = newChild('td', $tr);
 		$input = newChild('input', $td);
 
-		$th.innerText = key;
+		$th.innerText = dic[key]||key;
 		$input.setAttribute('type', 'number');
 		$input.setAttribute('id', key);
 		$input.value = 0;
 
 		if (idx == keys.tear.length - 1) {
-			let $empty = newChild('td', $tr);
 			let cnt = ((79 - idx) % 4) * 2;
-			$empty.setAttribute('colspan', cnt);
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
 		}
 
 	}
@@ -165,28 +169,27 @@ function drawScreen() {
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK ITEMS';
-
-	$tr = newChild('tr', $body);
-	$td = newChild('td', $tr);
-	$td.setAttribute('colspan', 8);
-
-	keys.item.forEach(function(key, idx) {
-
-		if (idx != 0 && idx % 10 == 0)
-			newChild('br', $td);
-
-		$option = newChild('label', $td);
-
-		$input = newChild('input', $option);
-		$input.setAttribute('type', 'checkbox');
-		$input.setAttribute('name', 'item');
-		$input.setAttribute('value', key);
-		$input.setAttribute('id', key);
-
-		$span = newChild('span', $option);
-		$span.innerText = key;
-
-	});
+	
+	for(let idx = 0 ; idx<keys.item.length ; idx++){
+		
+		let key = keys.item[idx];
+		
+		if(idx%8==0)
+			$tr = newChild('tr', $body);
+		
+		$td = newChild('td', $tr);
+		
+		newCheckbox(key, $td);
+		
+		if (idx == keys.item.length - 1) {
+			let cnt = ((79 - idx) % 8) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+		
+	}
 	// !ITEMS create
 
 	// WEAPONES create
@@ -196,27 +199,26 @@ function drawScreen() {
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK WEAPONES';
 
-	$tr = newChild('tr', $body);
-	$td = newChild('td', $tr);
-	$td.setAttribute('colspan', 8);
-
-	keys.weapone.forEach(function(key, idx) {
-
-		if (idx != 0 && idx % 10 == 0)
-			newChild('br', $td);
-
-		$option = newChild('label', $td);
-
-		$input = newChild('input', $option);
-		$input.setAttribute('type', 'checkbox');
-		$input.setAttribute('name', 'weapone');
-		$input.setAttribute('value', key);
-		$input.setAttribute('id', key);
-
-		$span = newChild('span', $option);
-		$span.innerText = key;
-
-	});
+	for(let idx = 0 ; idx<keys.weapone.length ; idx++){
+		
+		let key = keys.weapone[idx];
+		
+		if(idx%8==0)
+			$tr = newChild('tr', $body);
+		
+		$td = newChild('td', $tr);
+		
+		newCheckbox(key, $td);
+		
+		if (idx == keys.weapone.length - 1) {
+			let cnt = ((79 - idx) % 8) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+		
+	}
 	// !WEAPONES create
 
 	// COLLAB create
@@ -225,28 +227,27 @@ function drawScreen() {
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK COLLABS';
-
-	$tr = newChild('tr', $body);
-	$td = newChild('td', $tr);
-	$td.setAttribute('colspan', 8);
-
-	keys.collab.forEach(function(key, idx) {
-
-		if (idx != 0 && idx % 10 == 0)
-			newChild('br', $td);
-
-		$option = newChild('label', $td);
-
-		$input = newChild('input', $option);
-		$input.setAttribute('type', 'checkbox');
-		$input.setAttribute('name', 'collab');
-		$input.setAttribute('value', key);
-		$input.setAttribute('id', key);
-
-		$span = newChild('span', $option);
-		$span.innerText = key;
-
-	});
+	
+	for(let idx = 0 ; idx<keys.collab.length ; idx++){
+		
+		let key = keys.collab[idx];
+		
+		if(idx%8==0)
+			$tr = newChild('tr', $body);
+		
+		$td = newChild('td', $tr);
+		
+		newCheckbox(key, $td);
+		
+		if (idx == keys.collab.length - 1) {
+			let cnt = ((79 - idx) % 8) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+		
+	}
 	// !COLLAB create
 	
 	// OUTFIT create
@@ -256,27 +257,26 @@ function drawScreen() {
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK OUTFITS';
 
-	$tr = newChild('tr', $body);
-	$td = newChild('td', $tr);
-	$td.setAttribute('colspan', 8);
-
-	keys.outfit.forEach(function(key, idx) {
-
-		if (idx != 0 && idx % 10 == 0)
-			newChild('br', $td);
-
-		$option = newChild('label', $td);
-
-		$input = newChild('input', $option);
-		$input.setAttribute('type', 'checkbox');
-		$input.setAttribute('name', 'outfit');
-		$input.setAttribute('value', key);
-		$input.setAttribute('id', key);
-
-		$span = newChild('span', $option);
-		$span.innerText = key;
-
-	});
+	for(let idx = 0 ; idx<keys.outfit.length ; idx++){
+		
+		let key = keys.outfit[idx];
+		
+		if(idx%8==0)
+			$tr = newChild('tr', $body);
+		
+		$td = newChild('td', $tr);
+		
+		newCheckbox(key, $td);
+		
+		if (idx == keys.outfit.length - 1) {
+			let cnt = ((79 - idx) % 8) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+		
+	}
 	// !OUTFIT create
 
 }
@@ -288,6 +288,21 @@ function newChild(tagName, parent) {
 		parent.appendChild(element);
 	return element;
 
+}
+
+function newCheckbox(key, $td){
+	
+	let $label = newChild('label', $td);
+
+	let $input = newChild('input', $label);
+	$input.setAttribute('type', 'checkbox');
+	$input.setAttribute('name', 'item');
+	$input.setAttribute('value', key);
+	$input.setAttribute('id', key);
+
+	let $span = newChild('span', $label);
+	$span.innerText = dic[key]||key;
+	
 }
 
 function parseData(str) {
@@ -532,3 +547,24 @@ const keys = {
 		['myth', 'councilHope', 'gamers', 'gen0']
 
 };
+
+const dic = {
+		//UPG
+		'pickupRange':'획득반경',
+		//CHARACTER
+		'ame':'아메',
+		//TEAMNAME
+		'councilHope':'카운슬(irys)',
+		//ITEM
+		'InjectionAsacoco':'주입식아사코코',
+		'SuperChattoTime':'슈퍼챗타임',
+		//WEAPONE
+		'CEOTears':'YAGOO의눈물',
+		//COLLAB
+		'BreatheInAsacoco':'흡입식아사코코',
+		'MariLamy':'얼어붙은바다',
+		//OUTFIT
+		'kurokami':'쿠로카미',
+		//END
+		'LASTLINE':'LASTLINE'
+}
