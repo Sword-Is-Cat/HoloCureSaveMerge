@@ -551,15 +551,33 @@ const keys = {
 const dic = {
 		//UPG
 		'pickupRange':'획득반경',
+		'specUnlock':'스킬사용',
+		'specCDR':'스킬쿨감',
+		'growth':'성장',
+		'reroll':'리롤',
+		'enhanceUp':'강화확률',
+		'DR':'방어',
 		//CHARACTER
 		'ame':'아메',
+		'gura':'구라',
+		'ina':'이나',
+		'kiara':'키아라',
+		'calli':'칼리',
 		//TEAMNAME
+		'myth':'MYTH',
 		'councilHope':'카운슬(irys)',
+		'gamers':'게이머즈',
+		'gen0':'0기생',
 		//ITEM
+		'BodyPillow':'다키마쿠라',
 		'InjectionAsacoco':'주입식아사코코',
+		'PiggyBank':'돼지저금통',
 		'SuperChattoTime':'슈퍼챗타임',
 		//WEAPONE
 		'CEOTears':'YAGOO의눈물',
+		'CuttingBoard':'도마',
+		'HoloLaser':'팬빔',
+		'Tailplug':'삽입식아사코코',
 		//COLLAB
 		'BreatheInAsacoco':'흡입식아사코코',
 		'MariLamy':'얼어붙은바다',
