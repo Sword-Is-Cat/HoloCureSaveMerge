@@ -7,39 +7,47 @@ $(function() {
 
 	drawScreen();
 
-	$('input[type=file]').on('change', function() {
+	addListener();
 
+});
+
+function addListener(){
+	
+	//세이브파일 첨부 시
+	$('input[type=file]').on('change', function() {
+		
 		var fr = new FileReader();
 		fr.onload = function() {
-
+			
 			parseData(fr.result);
 			showData();
 		}
-
+		
 		fr.readAsText(this.files[0]);
 	});
-
+	
+	//다운로드버튼 클릭
 	$('#download').on('click', function() {
-
+		
 		update();
-
+		
 	});
-
+	
 	$('input[type=number]').attr('min', 0).attr('max', 999);
-	$('#holoCoins').attr('max', 1000000);
-
-});
+	$('#holoCoins').attr('max', 10000000);
+	
+}
 
 function drawScreen() {
 
 	const $body = document.querySelector('tbody');
 
 	let $tr, $th, $td;
-	let $tr1, $tr2, $input, $option, $span;
+	let $tr1, $tr2, $input;
 
 	// CODE LINE create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.innerText = 'CODE';
 
@@ -75,7 +83,8 @@ function drawScreen() {
 			$input.setAttribute('type', 'number');
 		} else {
 			$input = newChild('select', $td);
-
+			let $option;
+			
 			for (let i = 0; i <= cnt; i++) {
 				$option = newChild('option', $input);
 				$option.innerText = i;
@@ -97,189 +106,66 @@ function drawScreen() {
 
 	// CHARACTER create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'CHARACTER';
 
-	for (let idx = 0; idx < keys.chara.length; idx++) {
-
-		let key = keys.chara[idx];
-
-		if (idx % 4 == 0)
-			$tr = newChild('tr', $body);
-
-		$th = newChild('th', $tr);
-		$td = newChild('td', $tr);
-		$input = newChild('input', $td);
-
-		$th.innerText = dic[key]||key;
-		$input.setAttribute('type', 'number');
-		$input.setAttribute('id', key);
-		$input.value = 0;
-
-		if (idx == keys.chara.length - 1) {
-			let cnt = ((79 - idx) % 4) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-
-	}
+	drawNumber(keys.chara, $body);
 	// !CHARACTER create
 	
 	// TEAR create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'TEARS';
 
-	for (let idx = 0; idx < keys.tear.length; idx++) {
-
-		let key = keys.tear[idx];
-
-		if (idx % 4 == 0)
-			$tr = newChild('tr', $body);
-
-		$th = newChild('th', $tr);
-		$td = newChild('td', $tr);
-		$input = newChild('input', $td);
-
-		$th.innerText = dic[key]||key;
-		$input.setAttribute('type', 'number');
-		$input.setAttribute('id', key);
-		$input.value = 0;
-
-		if (idx == keys.tear.length - 1) {
-			let cnt = ((79 - idx) % 4) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-
-	}
+	drawNumber(keys.tear, $body);
 	// !TEAR create
 
 	// ITEMS create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK ITEMS';
 	
-	for(let idx = 0 ; idx<keys.item.length ; idx++){
-		
-		let key = keys.item[idx];
-		
-		if(idx%8==0)
-			$tr = newChild('tr', $body);
-		
-		$td = newChild('td', $tr);
-		
-		newCheckbox(key, $td);
-		
-		if (idx == keys.item.length - 1) {
-			let cnt = ((79 - idx) % 8) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-		
-	}
+	drawCheckbox(keys.item, $body);
 	// !ITEMS create
 
 	// WEAPONES create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK WEAPONES';
 
-	for(let idx = 0 ; idx<keys.weapone.length ; idx++){
-		
-		let key = keys.weapone[idx];
-		
-		if(idx%8==0)
-			$tr = newChild('tr', $body);
-		
-		$td = newChild('td', $tr);
-		
-		newCheckbox(key, $td);
-		
-		if (idx == keys.weapone.length - 1) {
-			let cnt = ((79 - idx) % 8) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-		
-	}
+	drawCheckbox(keys.weapone, $body);
 	// !WEAPONES create
 
 	// COLLAB create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK COLLABS';
 	
-	for(let idx = 0 ; idx<keys.collab.length ; idx++){
-		
-		let key = keys.collab[idx];
-		
-		if(idx%8==0)
-			$tr = newChild('tr', $body);
-		
-		$td = newChild('td', $tr);
-		
-		newCheckbox(key, $td);
-		
-		if (idx == keys.collab.length - 1) {
-			let cnt = ((79 - idx) % 8) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-		
-	}
+	drawCheckbox(keys.collab, $body);
 	// !COLLAB create
 	
 	// OUTFIT create
 	$tr = newChild('tr', $body);
-
+	
 	$th = newChild('th', $tr);
 	$th.setAttribute('colspan', 8);
 	$th.innerText = 'UNLOCK OUTFITS';
 
-	for(let idx = 0 ; idx<keys.outfit.length ; idx++){
-		
-		let key = keys.outfit[idx];
-		
-		if(idx%8==0)
-			$tr = newChild('tr', $body);
-		
-		$td = newChild('td', $tr);
-		
-		newCheckbox(key, $td);
-		
-		if (idx == keys.outfit.length - 1) {
-			let cnt = ((79 - idx) % 8) * 2;
-			if(cnt>0){
-				let $empty = newChild('td', $tr);
-				$empty.setAttribute('colspan', cnt);
-			}
-		}
-		
-	}
+	drawCheckbox(keys.outfit, $body);
 	// !OUTFIT create
 
 }
+
 
 function newChild(tagName, parent) {
 
@@ -302,6 +188,65 @@ function newCheckbox(key, $td){
 
 	let $span = newChild('span', $label);
 	$span.innerText = dic[key]||key;
+	
+}
+
+function drawNumber(keyArr, $body){
+	
+	let $tr, $th, $td, $input;
+	
+	for (let idx = 0; idx < keyArr.length; idx++) {
+
+		let key = keyArr[idx];
+
+		if (idx % 4 == 0)
+			$tr = newChild('tr', $body);
+
+		$th = newChild('th', $tr);
+		$td = newChild('td', $tr);
+		$input = newChild('input', $td);
+
+		$th.innerText = dic[key]||key;
+		$input.setAttribute('type', 'number');
+		$input.setAttribute('id', key);
+		$input.value = 0;
+
+		if (idx == keyArr.length - 1) {
+			let cnt = ((79 - idx) % 4) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+
+	}
+	
+}
+
+function drawCheckbox(keyArr, $body){
+	
+	let $tr, $td;
+	
+	for(let idx = 0 ; idx<keyArr.length ; idx++){
+		
+		let key = keyArr[idx];
+		
+		if(idx%8==0)
+			$tr = newChild('tr', $body);
+		
+		$td = newChild('td', $tr);
+		
+		newCheckbox(key, $td);
+		
+		if (idx == keyArr.length - 1) {
+			let cnt = ((79 - idx) % 8) * 2;
+			if(cnt>0){
+				let $empty = newChild('td', $tr);
+				$empty.setAttribute('colspan', cnt);
+			}
+		}
+		
+	}
 	
 }
 
@@ -549,40 +494,52 @@ const keys = {
 };
 
 const dic = {
-		//UPG
+		// UPG
 		'pickupRange':'획득반경',
-		'specUnlock':'스킬사용',
+		'specUnlock':'스킬해금',
 		'specCDR':'스킬쿨감',
 		'growth':'성장',
 		'reroll':'리롤',
 		'enhanceUp':'강화확률',
 		'DR':'방어',
-		//CHARACTER
+		// CHARACTER
 		'ame':'아메',
 		'gura':'구라',
 		'ina':'이나',
 		'kiara':'키아라',
 		'calli':'칼리',
-		//TEAMNAME
+		'bae':'밸즈',
+		// TEAMNAME
 		'myth':'MYTH',
 		'councilHope':'카운슬(irys)',
 		'gamers':'게이머즈',
 		'gen0':'0기생',
-		//ITEM
+		// ITEM
 		'BodyPillow':'다키마쿠라',
 		'InjectionAsacoco':'주입식아사코코',
 		'PiggyBank':'돼지저금통',
 		'SuperChattoTime':'슈퍼챗타임',
-		//WEAPONE
+		// WEAPONE
 		'CEOTears':'YAGOO의눈물',
 		'CuttingBoard':'도마',
 		'HoloLaser':'팬빔',
 		'Tailplug':'삽입식아사코코',
-		//COLLAB
+		// COLLAB
 		'BreatheInAsacoco':'흡입식아사코코',
 		'MariLamy':'얼어붙은바다',
-		//OUTFIT
-		'kurokami':'쿠로카미',
-		//END
+		// OUTFIT
+		'kurokami':'후부키(쿠로)',
+		'ameAlt1':'아메',
+		'inaAlt1':'이나',
+		'guraAlt1':'구라',
+		'calliAlt1':'칼리',
+		'kiaraAlt1':'키아라',
+		'irysAlt1':'아이리스',
+		'baeAlt1':'밸즈',
+		'sanaAlt1':'사나',
+		'faunaAlt1':'파우나',
+		'mumeiAlt1':'무메이',
+		'kroniiAlt1':'크로니',
+		// END
 		'LASTLINE':'LASTLINE'
 }
