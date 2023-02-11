@@ -74,7 +74,11 @@ const parseData = (str) => {
 }
 
 const encodeAndDownload = () => {
-	download(btoa(JSON.stringify(data)));
+	if(data){
+		download(btoa(JSON.stringify(data)));
+	}else{
+		print_message('[에러]:세이브파일이 로드되지 않았습니다');
+	}
 }
 
 const download = (encoded_string) => {
