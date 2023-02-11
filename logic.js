@@ -60,23 +60,23 @@ const readFile = (file) => {
 		}
 		fr.readAsText(file);
 	} else {
-		print_message('[에러]:'+fileName + ' 파일을 첨부 해 주세요');
+		print_message('[에러]:' + fileName + ' 파일을 첨부 해 주세요');
 	}
 }
 
 const parseData = (str) => {
-	try{
+	try {
 		data = JSON.parse(atob(str));
 		print_message('[성공]:세이브 파일 로드');
-	}catch(err){
+	} catch (err) {
 		print_message('[에러]:세이브 파일 로드 실패');
 	}
 }
 
 const encodeAndDownload = () => {
-	if(data){
+	if (data) {
 		download(btoa(JSON.stringify(data)));
-	}else{
+	} else {
 		print_message('[에러]:세이브파일이 로드되지 않았습니다');
 	}
 }
@@ -120,12 +120,16 @@ const cheat_action = (key) => {
 					data.characters.forEach((chara) => chara[1] += 10);
 					text = '[성공]:chara-cheat';
 					break;
+				case 'ch_clear':
+					data.completedStages.forEach((stg) => stg[1] = JSON.parse(all.character));
+					text = '[성공]:clear-cheat';
+					break;
 			}
-		}else{
+		} else {
 			text = '[에러]:세이브파일이 로드되지 않았습니다';
 		}
 	} catch (err) {
-		text = '[에러]:'+err.message;
+		text = '[에러]:' + err.message;
 	}
 	return text;
 }
@@ -138,45 +142,16 @@ const print_message = (text) => {
 
 const keys = {
 
-	'upg': [
-		['HP', 10],
-		['ATK', 10],
-		['SPD', 10],
-		['crit', 5],
-		['pickupRange', 10],
-		['haste', 5],
-		['regen', 5],
-		['specUnlock', 1],
-		['specCDR', 5],
-		['growth', 1],
-		['EXP', 5],
-		['food', 5],
-		['moneyGain', 10],
-		['reroll', 5],
-		['enhanceUp', 5],
-		['DR', 5],
-		['holoCoins']],
-	'chara':
-		['ame', 'gura', 'ina', 'kiara', 'calli',
-			'bae', 'kronii', 'fauna', 'mumei', 'sana',
-			'irys', 'fubuki', 'mio', 'okayu', 'korone',
-			'sora', 'azki', 'roboco', 'suisei', 'miko'],
-	'weapone': [
-		'SpiderCooking', 'EliteLava', 'CEOTears', 'WamyWater', 'HoloBomb', 'PsychoAxe', 'BLBook',
-		'CuttingBoard', 'HoloLaser', 'Tailplug', 'Glowstick', 'XPotato', 'IdolSong'
-	],
-	'item': [
-		'Sake',
-		'Limiter', 'BodyPillow', 'InjectionAsacoco', 'CreditCard', 'Halu', 'HolyMilk', 'FaceMask',
-		'Plushie', 'SuccubusHorn', 'FullMeal', 'Membership', 'PikiPikiPiman', 'Headphones', 'ChickensFeather',
-		'GorillasPaw', 'UberSheep', 'IdolCostume', 'EnergyDrink', 'PiggyBank', 'StudyGlasses', 'Bandaid',
-		'GWSPill', 'SuperChattoTime'
-	],
 	'collab': [
 		'RapDog', 'BreatheInAsacoco', 'DragonBeam', 'BrokenDreams', 'EliteCooking',
 		'IdolConcert', 'StreamOfTears', 'BLLover', 'MiComet', 'MariLamy', 'FlatBoard', 'LightBeam'
-	],
-	'outfit':
-		['kurokami', 'ameAlt1', 'inaAlt1', 'guraAlt1', 'calliAlt1', 'kiaraAlt1', 'irysAlt1', 'baeAlt1', 'sanaAlt1', 'faunaAlt1', 'mumeiAlt1', 'kroniiAlt1'],
+	]
+}
 
-};
+const all = {
+	'character': '["kronii","fubuki","calli","suisei","roboco","fauna","sora","miko","gura","sana","okayu","irys","bae","azki","kiara","ina","korone","mio","ame","mumei","mel","matsuri","choco","ayame","haato","aki","shion","aqua","subaru"]',
+	'item':'["Sake","Limiter","BodyPillow","InjectionAsacoco","CreditCard","Halu","HolyMilk","FaceMask","Plushie","SuccubusHorn","FullMeal","Membership","PikiPikiPiman","Headphones","ChickensFeather","GorillasPaw","UberSheep","IdolCostume","EnergyDrink","PiggyBank","StudyGlasses","Bandaid","GWSPill","SuperChattoTime","Breastplate","BlacksmithsGear","Shacklesss","HopeSoda","DevilHat"]',
+	'weapone':'["SpiderCooking","EliteLava","CEOTears","WamyWater","HoloBomb","PsychoAxe","BLBook","CuttingBoard","HoloLaser","Tailplug","Glowstick","XPotato","IdolSong","ENCurse","BounceBall"]',
+	'outfit':'["default","ameAlt2","ameAlt1","inaAlt2","inaAlt1","guraAlt2","guraAlt1","calliAlt2","calliAlt1","kiaraAlt2","kiaraAlt1","irysAlt2","irysAlt1","baeAlt1","sanaAlt1","faunaAlt2","faunaAlt1","mumeiAlt1","kroniiAlt2","kroniiAlt1","fubukiAlt1","kurokami","mioAlt1","koroneAlt1","okayuAlt1","soraAlt1","azkiAlt1","robocoAlt1","suiseiAlt1","mikoAlt1"]',
+	'stage':'["STAGE 1","STAGE 2","STAGE 1 (HARD)","STAGE 3","TIME STAGE 1","STAGE 2 (HARD)"]'
+}
