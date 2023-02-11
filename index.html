@@ -1,48 +1,40 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8" />
-<title>HoloCureSaveEditor</title>
+	<meta charset="utf-8" />
+	<title>HoloCureSaveEditor</title>
+	<link type="text/css" rel="stylesheet" href="default.css" />
+	<script id="logic" src="logic.js"></script>
 </head>
+
 <body>
-
 	<div>
-		<p class="font30 tcenter">HoloCure SaveEditor</p>
-	</div>
-	<div>
-		<form>
-			<table id='resultTable' summary="게시판 리스트">
-				<colgroup>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-					<col width='12.5%'>
-				</colgroup>
-				<tbody>
+		<div class="title">
+			<p class="font30 tcenter">HoloCure SaveEditor</p>
+		</div>
+		<div class="content">
+			<div id="drop_zone">
+				<p class="tcenter mt30"><i>save_n.dat</i> 파일을 이곳에 드래그-앤-드랍</p>
+			</div>
+			<div id="button_zone">
+				<div>
+					<button class="mt10" name="cheat" id='ch_coin'>홀로코인 + 1,000,000</button>
+					<button class="mt10" name="cheat" id='ch_tear'>기수별 Tear + 100</button>
+					<button class="mt10" name="cheat" id='ch_chara'>모든캐릭 해금 및 rank + 10</button>
+					<button class="mt10" id='download'>세이브파일 생성</button>
+				</div>
+			</div>
+			<div id="message_zone">
 
-
-				</tbody>
-			</table>
-		</form>
+			</div>
+		</div>
+		<div class="footer">
+			<span class="fleft">KoruNoke</span>
+			<span class="fright">update 2023-02-11</span>
+		</div>
 	</div>
-	<div style='margin-top: 20px; height: 50px;'>
-		<label style='float: left;'> <input type="file"
-			style='display: none;' /> <span class='button'>기존 세이브파일</span>
-		</label>
-		
-		<button id='download' style='float: right;'>세이브파일 생성</button>
-		
-	</div>
-	<div style='margin-top: 20px; height: 50px;'>
-		<span style='float:right;'>KoruNoke</span>
-	</div>
-	
 </body>
-<link type="text/css" rel="stylesheet" href="default.css" />
-<script src="jquery-1.11.0.min.js"></script>
-<script src="logic.js"></script>
+
+
 </html>
