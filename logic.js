@@ -55,7 +55,7 @@ const dropHandler = (ev) => {
 const readFile = (file) => {
 	if (file.name === fileName) {
 		let fr = new FileReader();
-		fr.onload = function () {
+		fr.onload = () => {
 			parseData(fr.result);
 		}
 		fr.readAsText(file);
@@ -69,7 +69,7 @@ const parseData = (str) => {
 		data = JSON.parse(atob(str));
 		print_message('[성공]:세이브 파일 로드');
 	} catch (err) {
-		print_message('[에러]:세이브 파일 로드 실패');
+		print_message('[에러]:세이브 파일 로드 실패 ' + err.message);
 	}
 }
 
@@ -121,7 +121,7 @@ const cheat_action = (key) => {
 					text = '[성공]:chara-cheat';
 					break;
 				case 'ch_clear':
-					data.completedStages.forEach((stg) => stg[1] = JSON.parse(all.character));
+					data.completedStages.forEach((stg) => stg[1] = get_characters());
 					text = '[성공]:clear-cheat';
 					break;
 			}
@@ -134,24 +134,32 @@ const cheat_action = (key) => {
 	return text;
 }
 
-const print_message = (text) => {
-	let span = document.createElement('span');
-	span.innerText = text;
-	document.getElementById('message_zone').appendChild(span);
+let characters;
+
+const get_characters = () => {
+	if (!characters && data) {
+		let non_characters = JSON.parse(all.non_character);
+		characters = data.characters.map(element => element[0]).filter(chara => non_characters.indexOf(chara) === -1);
+	}
+	return characters;
 }
 
-const keys = {
+let message_zone;
 
-	'collab': [
-		'RapDog', 'BreatheInAsacoco', 'DragonBeam', 'BrokenDreams', 'EliteCooking',
-		'IdolConcert', 'StreamOfTears', 'BLLover', 'MiComet', 'MariLamy', 'FlatBoard', 'LightBeam'
-	]
+const print_message = (text) => {
+	if (!message_zone)
+		message_zone = document.getElementById('message_zone');
+	let span = document.createElement('span');
+	span.innerText = text;
+	message_zone.appendChild(span);
 }
 
 const all = {
+	'non_character': '["none","empty","random"]',
 	'character': '["kronii","fubuki","calli","suisei","roboco","fauna","sora","miko","gura","sana","okayu","irys","bae","azki","kiara","ina","korone","mio","ame","mumei","mel","matsuri","choco","ayame","haato","aki","shion","aqua","subaru"]',
-	'item':'["Sake","Limiter","BodyPillow","InjectionAsacoco","CreditCard","Halu","HolyMilk","FaceMask","Plushie","SuccubusHorn","FullMeal","Membership","PikiPikiPiman","Headphones","ChickensFeather","GorillasPaw","UberSheep","IdolCostume","EnergyDrink","PiggyBank","StudyGlasses","Bandaid","GWSPill","SuperChattoTime","Breastplate","BlacksmithsGear","Shacklesss","HopeSoda","DevilHat"]',
-	'weapone':'["SpiderCooking","EliteLava","CEOTears","WamyWater","HoloBomb","PsychoAxe","BLBook","CuttingBoard","HoloLaser","Tailplug","Glowstick","XPotato","IdolSong","ENCurse","BounceBall"]',
-	'outfit':'["default","ameAlt2","ameAlt1","inaAlt2","inaAlt1","guraAlt2","guraAlt1","calliAlt2","calliAlt1","kiaraAlt2","kiaraAlt1","irysAlt2","irysAlt1","baeAlt1","sanaAlt1","faunaAlt2","faunaAlt1","mumeiAlt1","kroniiAlt2","kroniiAlt1","fubukiAlt1","kurokami","mioAlt1","koroneAlt1","okayuAlt1","soraAlt1","azkiAlt1","robocoAlt1","suiseiAlt1","mikoAlt1"]',
-	'stage':'["STAGE 1","STAGE 2","STAGE 1 (HARD)","STAGE 3","TIME STAGE 1","STAGE 2 (HARD)"]'
+	'item': '["Sake","Limiter","BodyPillow","InjectionAsacoco","CreditCard","Halu","HolyMilk","FaceMask","Plushie","SuccubusHorn","FullMeal","Membership","PikiPikiPiman","Headphones","ChickensFeather","GorillasPaw","UberSheep","IdolCostume","EnergyDrink","PiggyBank","StudyGlasses","Bandaid","GWSPill","SuperChattoTime","Breastplate","BlacksmithsGear","Shacklesss","HopeSoda","DevilHat"]',
+	'weapone': '["SpiderCooking","EliteLava","CEOTears","WamyWater","HoloBomb","PsychoAxe","BLBook","CuttingBoard","HoloLaser","Tailplug","Glowstick","XPotato","IdolSong","ENCurse","BounceBall"]',
+	'outfit': '["default","ameAlt2","ameAlt1","inaAlt2","inaAlt1","guraAlt2","guraAlt1","calliAlt2","calliAlt1","kiaraAlt2","kiaraAlt1","irysAlt2","irysAlt1","baeAlt1","sanaAlt1","faunaAlt2","faunaAlt1","mumeiAlt1","kroniiAlt2","kroniiAlt1","fubukiAlt1","kurokami","mioAlt1","koroneAlt1","okayuAlt1","soraAlt1","azkiAlt1","robocoAlt1","suiseiAlt1","mikoAlt1"]',
+	'stage': '["STAGE 1","STAGE 2","STAGE 1 (HARD)","STAGE 3","TIME STAGE 1","STAGE 2 (HARD)"]',
+	'collab': '["RapDog","BreatheInAsacoco","DragonBeam","BrokenDreams","EliteCooking","IdolConcert","StreamOfTears","BLLover","MiComet","MariLamy","FlatBoard","LightBeam","BoneBros","EldritchHorror","ImDie","RingOfFitness","SnowSake","AbsoluteWall","MiKorone"]'
 }
