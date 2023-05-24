@@ -152,6 +152,9 @@ const print_message = (text) => {
 	let span = document.createElement('span');
 	span.innerText = text;
 	message_zone.appendChild(span);
+	while(message_zone.children.length > 10){
+		message_zone.children[0].remove();
+	}
 }
 
 const all = {

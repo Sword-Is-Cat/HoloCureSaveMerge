@@ -1,41 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8" />
 	<title>HoloCureSaveEditor</title>
 	<link type="text/css" rel="stylesheet" href="default.css" />
 	<script src="logic.js"></script>
 </head>
-
 <body>
-	<div>
+	<div class="body_wrapper">
 		<div class="title">
-			<p class="font30 tcenter">HoloCure SaveEditor</p>
+			<div class="image_wrapper fleft" style="width:30%;height:100%;">
+				<img class="inherit_height" src="./img/holocure_logo.png"/>
+			</div>
+			<div class="fright" style="width:70%;height:100%;">
+				<p class="font50 tcenter">HoloCure SaveEditor</p>
+			</div>
 		</div>
 		<div class="content">
-			<div id="drop_zone">
-				<p class="tcenter mt20"><i>save_n.dat</i> 파일을 이곳에 드래그-앤-드랍<br />%appdata%/../local/holocure</p>
-			</div>
-			<div id="button_zone">
-				<div>
-					<button class="mt10" name="cheat" id='ch_coin'>홀로코인 + 1,000,000</button>
-					<button class="mt10" name="cheat" id='ch_tear'>기수별 Tear + 100</button>
-					<button class="mt10" name="cheat" id='ch_chara'>모든캐릭 해금 및 rank + 10</button>
-					<button class="mt10" name="cheat" id='ch_clear'>모든캐릭 클리어이력 (Fandom)</button>
-					<button class="mt10" id='download'>세이브파일 생성</button>
+				<div id="drop_zone">
+					<p class="font20 tcenter mt20"><i>save_n.dat</i> 파일을 이곳에 드래그-앤-드랍<br />%appdata%/../local/holocure</p>
 				</div>
+				<div>
+					<button id="download">세이브파일 생성</button>
+				</div>
+			<div id="button_zone">
+				<ul>
+					<li><button name="cheat" id='ch_coin'>홀로코인 + 1,000,000</button></li>
+					<li><button name="cheat" id='ch_tear'>기수별 Tear + 100</button></li>
+					<li><button name="cheat" id='ch_chara'>모든캐릭 해금 및 rank + 10</button></li>
+					<li><button name="cheat" id='ch_clear'>모든캐릭 클리어이력 (Fandom)</button></li>
+				</ul>
 			</div>
 			<div id="message_zone">
 
 			</div>
 		</div>
 		<div class="footer">
-			<span class="fleft">KoruNoke</span>
-			<span class="fright">update 2023-02-11</span>
+			<div style="height:100%; margin:auto; padding:5px;">
+				<span class="font20 fleft">KoruNoke</span>
+				<span class="font20 fright">update 2023-02-11</span>
+			</div>
 		</div>
 	</div>
 </body>
-
-
 </html>
