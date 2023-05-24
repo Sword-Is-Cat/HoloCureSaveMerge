@@ -68,6 +68,7 @@ const parseData = (str) => {
 	try {
 		data = JSON.parse(atob(str));
 		print_message('[성공]:세이브 파일 로드');
+		document.getElementById('download').style.backgroundColor = 'cornflowerblue';
 	} catch (err) {
 		print_message('[에러]:세이브 파일 로드 실패 ' + err.message);
 	}
