@@ -20,13 +20,13 @@ html, body { width: 100%; height:100%; margin: 0; padding: 0; }
 body { text-align: center; font-size: 15px; line-height: 1.5em; background-color: #000; background-image: url(./img/fixed_bg.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover; } 
 ol, ul, li { list-style: none; margin-block-start: 0; margin-block-end: 0; padding-inline-start: 0; } 
 
-.body_wrapper { min-width: 1000px; width: 60%; height: 100%; margin: auto; } 
+.body_wrapper { min-width: 800px; width: 60%; height: 100%; margin: auto; } 
 
-.title { width:100%; height:130px; margin:0; padding: 10px; } 
-.content { width:100%; height:calc( 100% - 270px ); margin:0; padding: 10px; } 
+.title { width:100%; height:12%; margin:0; padding: 10px; } 
+.content { width:100%; height:calc( 80% - 60px ); margin:0; padding: 10px; } 
 .content > div { margin-top: 10px; } 
 .content > div:first-child { margin-top: 0; } 
-.footer { width:100%; height:80px; margin:0; padding: 10px; } 
+.footer { width:100%; height:8%; margin:0; padding: 10px; } 
 
 .image_wrapper > img { display: block; margin: auto; } 
 .image_wrapper > img.inherit_width { width:100%; } 
