@@ -63,7 +63,7 @@ table tbody tr td { font-size: 12px; color: #000000; background: #fff; border: 1
 #download { height:80px; font-size: 20px; background-color: silver; } 
 #drop_zone { border: 8px solid #25aeff; height: 90px; padding:10px; } 
 
-#button_zone { height:150px; margin-top:0; } 
+#button_zone { height:200px; margin-top:0; } 
 #button_zone > div { width: 50%; max-width: 50%; margin: auto; } 
 #button_zone ul li { width:calc(50% - 5px); float:left; margin: 10px 10px 0 0; } 
 #button_zone ul li:nth-child(2n) { margin-right: 0; } 

@@ -125,9 +125,21 @@ const cheat_action = (key) => {
 					data.characters.forEach((chara) => chara[1] += 10);
 					text = '[성공]:chara-cheat';
 					break;
+				case 'ch_chara_r':
+					data.characters.forEach((chara) => chara[1] = Math.max(1, chara[1]-10));
+					text = '[성공]:chara-lvl-down-cheat';
+					break;
 				case 'ch_clear':
 					data.completedStages.forEach((stg) => stg[1] = get_characters());
 					text = '[성공]:clear-cheat';
+					break;
+				case 'ch_clear_r':
+					data.completedStages.forEach((stg) => stg[1] = []);
+					text = '[성공]:clear-remove-cheat';
+					break;
+				case 'ch_inven':
+					data.inventory.forEach((inv) => {inv[1] += 10; inv[2] += 10;});
+					text = '[성공]:inventory-cheat';
 					break;
 			}
 		} else {
