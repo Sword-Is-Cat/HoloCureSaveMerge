@@ -113,6 +113,10 @@ const cheat_action = (key) => {
 					data.holoCoins += 1000000;
 					text = '[성공]:coin-cheat';
 					break;
+				case 'ch_sand':
+					data.fishSand += 1000000;
+					text = '[성공]:sand-cheat';
+					break;
 				case 'ch_tear':
 					data.tears.forEach((arr) => arr[1] += 100);
 					text = '[성공]:tear-cheat';
